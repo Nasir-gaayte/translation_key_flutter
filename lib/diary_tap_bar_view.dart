@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_dialry/controller/diary_controller.dart';
 import 'package:my_dialry/screens/diary.dart';
 import 'package:my_dialry/screens/setting.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,8 @@ class DiaryTabBarView extends StatefulWidget {
 }
 
 class _DiaryTabBarViewState extends State<DiaryTabBarView> {
+  final DiaryController _diaryController =
+      Get.put(DiaryController(), tag: 'diary_controller');
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -40,13 +43,16 @@ class _DiaryTabBarViewState extends State<DiaryTabBarView> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               TextField(
-                                onChanged: (value) {},
+                                onChanged: (value) {
+                                  _diaryController.changeEntryText(value);
+                                },
                               ),
                               const SizedBox(
                                 height: 8,
                               ),
                               ElevatedButton(
                                   onPressed: () {
+                                    _diaryController.addDairyEntry();
                                     Get.back();
                                   },
                                   child: Text('add'.tr))
@@ -68,7 +74,7 @@ class _DiaryTabBarViewState extends State<DiaryTabBarView> {
             ]),
           ),
           body: TabBarView(children: [
-            const DiaryScreen(),
+            DiaryScreen(),
             SettingScreen(),
           ]),
         ));

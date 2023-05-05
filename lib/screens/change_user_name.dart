@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_dialry/controller/user_controller.dart';
 
 class ChangeUserName extends StatefulWidget {
   const ChangeUserName({super.key});
@@ -9,13 +10,20 @@ class ChangeUserName extends StatefulWidget {
 }
 
 class _ChangeUserNameState extends State<ChangeUserName> {
+  final UserController _userController = Get.find(tag: 'user_controller');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const TextField(),
+          TextField(
+            onChanged: (value) {
+              if (value != "") {
+                _userController.chanageUsername(value);
+              }
+            },
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -23,7 +31,7 @@ class _ChangeUserNameState extends State<ChangeUserName> {
               onPressed: () {
                 Get.back();
               },
-              child: Text('change_username'.tr))
+              child: Text('change_user'.tr))
         ]),
       ),
     );

@@ -6,12 +6,14 @@ class Locales extends Translations {
         'en_US': {
           "change_username": "US Englishs",
           'diary': 'My Diary',
-          'add': 'Add'
+          'add': 'Add',
+          'change_user': 'Change the user name',
         },
         'so_So': {
           "change_username": "Afsomaali",
           'diary': 'Balan Maalmeed',
-          'add': 'Mid Cusub'
+          'add': 'Mid Cusub',
+          'change_user': 'Badal Magaca ',
         },
       };
 }

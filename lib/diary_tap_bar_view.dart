@@ -17,7 +17,13 @@ class _DiaryTabBarViewState extends State<DiaryTabBarView> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: Text('diary'.tr),
+            title: Text(
+              'diary'.tr,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold),
+            ),
             actions: [
               IconButton(
                 onPressed: () {
@@ -43,7 +49,7 @@ class _DiaryTabBarViewState extends State<DiaryTabBarView> {
                                   onPressed: () {
                                     Get.back();
                                   },
-                                  child:  Text('add'.tr))
+                                  child: Text('add'.tr))
                             ],
                           ),
                         );
@@ -61,8 +67,8 @@ class _DiaryTabBarViewState extends State<DiaryTabBarView> {
               )
             ]),
           ),
-          body: const TabBarView(children: [
-            DiaryScreen(),
+          body: TabBarView(children: [
+            const DiaryScreen(),
             SettingScreen(),
           ]),
         ));

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_dialry/controller/user_controller.dart';
 import 'package:my_dialry/screens/change_user_name.dart';
 
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
+  SettingScreen({super.key});
+  final UserController _userController =
+      Get.put(UserController(), tag: 'user_controller');
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +17,10 @@ class SettingScreen extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          Text(
-            'UserName',
-            style: Get.textTheme.headline5,
-          ),
+          Obx(() => Text(
+                _userController.username,
+                style: Get.textTheme.headline5,
+              )),
           const SizedBox(
             height: 10,
           ),

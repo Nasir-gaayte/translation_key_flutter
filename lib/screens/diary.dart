@@ -18,14 +18,28 @@ class DiaryScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(_diaryController.dirayEntry[index].dateString),
-                        const SizedBox(
-                          height: 5,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(_diaryController.dirayEntry[index].dateString),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text(_diaryController.dirayEntry[index].content)
+                          ],
                         ),
-                        Text(_diaryController.dirayEntry[index].content)
+                        IconButton(
+                            onPressed: () {
+                              _diaryController.deleteEntry(index);
+                            },
+                            icon: const Icon(
+                              Icons.delete,
+                              color: Colors.red,
+                              size: 30,
+                            ))
                       ],
                     ),
                   );

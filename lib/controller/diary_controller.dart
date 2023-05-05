@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:my_dialry/models/diary_entry_model.dart';
+import 'package:intl/intl.dart';
 
 class DiaryController extends GetxController {
   List<DirayEntry> get dirayEntry => [..._diaryEntry].toList();
@@ -11,7 +12,8 @@ class DiaryController extends GetxController {
 
   void addDairyEntry() {
     if (_entryText != "") {
-      String dateString = DateTime.now().toString();
+      DateFormat dateFormat = DateFormat.yMMMMEEEEd(Get.locale.toString());
+      String dateString = dateFormat.format(DateTime.now());
       _diaryEntry.add(DirayEntry(dateString: dateString, content: _entryText));
     }
     _entryText = "";

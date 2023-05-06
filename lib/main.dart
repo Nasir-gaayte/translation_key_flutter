@@ -4,7 +4,10 @@ import 'package:get/get.dart';
 
 import 'models/locales.dart';
 
-void main() {
+import 'package:get_storage/get_storage.dart';
+
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -20,8 +23,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.lime)),
       home: const DiaryTabBarView(),
       translations: Locales(),
-      locale: const Locale("en","US"),
+      locale: const Locale("en", "US"),
     );
   }
 }
-
